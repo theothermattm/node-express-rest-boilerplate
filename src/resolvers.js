@@ -1,7 +1,10 @@
 const replacemeService = require('./services/replacemeService')
+const logging = require('../src/logging')
 module.exports = {
   Query: {
     employees: async _ => {
+
+      logging.log('info', 'Getting employees in resolver')
       return replacemeService.getModelItems()
     }
   },

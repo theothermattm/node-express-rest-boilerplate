@@ -76,7 +76,7 @@ let addModelItem = async (item) => {
 let updateModelItem = async (item) => {
   logging.log('debug', 'Updating item %o', item)
   employees.forEach((employee, i) => {
-    if (parseInt(item.id) === employee.id) {
+    if (parseInt(item.id) === parseInt(employee.id)) {
       employees[i] = item
     }
   })

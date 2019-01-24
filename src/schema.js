@@ -8,19 +8,21 @@ const typeDefs = gql`
     id: String!
     firstName: String
     lastName: String
-    locaiton: String
+    location : String
     tasks: [Task]
   }
 
   type Task {
+    id : ID!
     description: String
     name: String
     completed: Boolean
   }
 
   input UpdateEmployeeInput {
-    firstName: String
-    lastName: String
+    id: ID
+    firstName: String!
+    lastName: String!
     location: String
     tasks: [TaskInput]
   }
@@ -28,18 +30,20 @@ const typeDefs = gql`
   input AddEmployeeInput {
     firstName: String!
     lastName: String!
-    location: String!
+    location: String
+    tasks : [TaskInput]
   }
 
   input TaskInput {
+    id: ID
     description: String
     name: String
     completed: Boolean
   }
 
   type Mutation {
-    updateEmployee( id: ID!, employee: AddEmployeeInput! ) : AddUpdateEmployeeMutationResponse
-    addEmployee(employee: UpdateEmployeeInput!) : AddUpdateEmployeeMutationResponse
+    updateEmployee( id: ID!, employee: UpdateEmployeeInput! ) : AddUpdateEmployeeMutationResponse
+    addEmployee(employee: AddEmployeeInput!) : AddUpdateEmployeeMutationResponse
   }
 
   interface MutationResponse {
